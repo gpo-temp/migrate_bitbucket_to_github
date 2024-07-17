@@ -6,7 +6,7 @@
 HELP=$(cat << EndOfMessage
 This script migrates a Bitbucket repository to GitHub.
 
-Usage: migrate_bitbucket_to_github <bitbucket_org> <github_org> [OPTIONS]
+Usage: bb2gh <bitbucket_org> <github_org> [OPTIONS]
 
 Requires an SSH for Bitbucket and an authenticated \`gh\` instance
 
@@ -21,10 +21,8 @@ Options:
     --help                Show this help message and exit
 
 Example usage:
-    migrate_bitbucket_to_github my_bitbucket_org my_github_org --repo=repo1
-    migrate_bitbucket_to_github my_bb_org my_gh_org --repo=repo1 --repo=repo2
-
-TODO: this only pushes the main branch, however we want to migrate EVERYTHING
+    bb2gh my_bitbucket_org my_github_org --repo=repo1
+    bb2gh my_bb_org my_gh_org --repo=repo1 --repo=repo2
 EndOfMessage
 )
 
@@ -91,7 +89,7 @@ for REPO_NAME in "${repos[@]}"; do
 
     # Actually do the migration
 
-    temp_repo="$temp_dir/$REPO_NAME.git" 
+    temp_repo="$temp_dir/$REPO_NAME.git"
 
     # clone the repo from bitbucket setting the remote name as bitbucket
     git -C $temp_dir clone --mirror --origin bitbucket git@bitbucket.org:$BITBUCKET_ORG/$REPO_NAME.git --quiet

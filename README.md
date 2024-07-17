@@ -11,6 +11,20 @@ Features:
 
 Limitations:
 - DOES NOT CHECK for usage of the github repo (will blow away changes)
-- If changes are made to the main branch it will not allow pushing the
+- If changes are made to the github main branch it will not allow pushing the
   main branch
+
+## Installation
+
+```bash
+curl -O https://raw.githubusercontent.com/gpo/migrate_bitbucket_to_github/main/bb2gh && chmod +x bb2gh
+```
+
+## Usage
+
+```bash
+./bb2gh <bitbucket_org> <github_org> --repo=<repo_name>
+```
+
+full help text (here)[https://github.com/gpo/migrate_bitbucket_to_github/blob/main/migrate_bitbucket_to_github#L7-L25]
 
